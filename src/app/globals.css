@@ -1,0 +1,170 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: #f6f7f5;
+  --foreground: #171a18;
+  --card: #ffffff;
+  --card-foreground: #171a18;
+  --popover: #ffffff;
+  --popover-foreground: #171a18;
+  --primary: #526e63;
+  --primary-foreground: #ffffff;
+  --secondary: #f0f2ef;
+  --secondary-foreground: #31483f;
+  --muted: #f0f2ef;
+  --muted-foreground: #68706b;
+  --accent: #e5ece8;
+  --accent-foreground: #31483f;
+  --destructive: #a84646;
+  --border: #e3e7e3;
+  --input: #d3d9d4;
+  --ring: #526e63;
+  --chart-1: #526e63;
+  --chart-2: #789086;
+  --chart-3: #9eaea7;
+  --chart-4: #c3cec8;
+  --chart-5: #dce4df;
+  --radius: 0.75rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #171a18;
+  --sidebar-primary: #526e63;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f0f2ef;
+  --sidebar-accent-foreground: #31483f;
+  --sidebar-border: #e3e7e3;
+  --sidebar-ring: #526e63;
+  --font-sans: Inter, "PingFang SC", "Noto Sans SC", "Microsoft YaHei", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.dark {
+  --background: #0f1211;
+  --foreground: #f3f5f3;
+  --card: #161a18;
+  --card-foreground: #f3f5f3;
+  --popover: #202522;
+  --popover-foreground: #f3f5f3;
+  --primary: #91b2a4;
+  --primary-foreground: #102019;
+  --secondary: #1c211e;
+  --secondary-foreground: #d9e8e1;
+  --muted: #1c211e;
+  --muted-foreground: #a8b0aa;
+  --accent: #24342d;
+  --accent-foreground: #d9e8e1;
+  --destructive: #dd7a7a;
+  --border: #292f2b;
+  --input: #39413c;
+  --ring: #91b2a4;
+  --chart-1: #91b2a4;
+  --chart-2: #739487;
+  --chart-3: #5f766d;
+  --chart-4: #45584f;
+  --chart-5: #34423c;
+  --sidebar: #161a18;
+  --sidebar-foreground: #f3f5f3;
+  --sidebar-primary: #91b2a4;
+  --sidebar-primary-foreground: #102019;
+  --sidebar-accent: #1c211e;
+  --sidebar-accent-foreground: #d9e8e1;
+  --sidebar-border: #292f2b;
+  --sidebar-ring: #91b2a4;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    min-height: 100dvh;
+  }
+  html {
+    @apply font-sans;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+  .content-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 72px;
+  }
+  .safe-bottom {
+    padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body.privacy-active main {
+  filter: blur(18px);
+  user-select: none;
+}
