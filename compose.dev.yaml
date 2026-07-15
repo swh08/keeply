@@ -1,0 +1,18 @@
+services:
+  migrate:
+    image: keeply:dev
+    pull_policy: never
+    build:
+      context: .
+      target: runner
+      args:
+        APP_VERSION: dev
+
+  keeply:
+    image: keeply:dev
+    pull_policy: never
+    build:
+      context: .
+      target: runner
+      args:
+        APP_VERSION: dev
